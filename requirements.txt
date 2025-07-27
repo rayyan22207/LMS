@@ -1,11 +1,50 @@
+# Core
 Django>=5.0,<5.1
-gunicorn
 python-decouple
-psycopg[binary]
 dj-database-url
+psycopg[binary]
 requests
+
+# Server & Deployment
+gunicorn
 whitenoise
+
+# Auth
 django-allauth[socialaccount]
 django-allauth-ui
 django-widget-tweaks
-stripe
+
+# Frontend (for Tailwind/Flowbite integration)
+django-tailwind
+django-browser-reload  # for hot reloading during dev
+django-htmx  # required for SaaS Foundations
+
+# File Storage (AWS S3)
+boto3
+django-storages
+
+# Payment Integration (Paddle / Stripe)
+paddle-python-sdk  # or use `requests` if you custom integrate
+# OR stripe (if fallback or needed for local testing)
+# stripe
+
+# Realtime Features
+channels
+channels-redis  # for production usage
+
+# Security & CORS
+django-cors-headers
+
+# Dev Tools
+ipython
+black
+isort
+pre-commit
+
+# Optional Enhancements
+django-debug-toolbar  # for dev only
+markdown2  # if lessons support markdown content
+Pillow  # image uploads for thumbnails
+
+# Environment Management
+python-dotenv  # alternative/flexible to decouple if needed
