@@ -78,7 +78,16 @@ INSTALLED_APPS = [
     "widget_tweaks",
     
     # my-apps
-    
+    "accounts",
+    "courses",
+    "discussions",
+    "certificates",
+    "media",
+    "realtime",
+    "payments",
+    "core",
+    "enrollments",
+
 ]
 
 MIDDLEWARE = [
