@@ -1,179 +1,96 @@
-# SaaS Foundations
+📚 LMS Foundations – Built with Django
+======================================
 
-Build the foundations for a Software as a Service business by leveraging Django, Tailwind, htmx, Neon Postgres, Redis, and more.
+This project is a full-featured **Learning Management System (LMS)** designed to be scalable, modular, and SaaS-ready.
 
-The goal of this project is to learn how to create a reusable foundation for building SaaS products. When release, this course will span multiple topics and give you a solid foundation into build your business.
+It’s built on top of the excellent open-source [SaaS Foundations](https://github.com/codingforentrepreneurs/SaaS-Foundations) template by _Coding for Entrepreneurs_, with major customizations for an education platform — including course management, student/instructor roles, Paddle payments, and real-time features.
 
+🚀 Tech Stack
+-------------
 
-## References
+LayerTech**Backend**Django 5+, Django REST Framework**Frontend**TailwindCSS (via Flowbite), htmx**Payments**Paddle SDK (paddle-python-sdk)**Database**Neon PostgreSQL**Realtime**Django Channels + Redis**Storage**AWS S3 (via django-storages)**Deployment**Railway (or Render)**Dev Tools**Docker, Django Debug Toolbar, dotenv
 
-- Deploy Django on [Railway](https://kirr.co/qysgeu) with [this Dockerfile and guide](https://www.codingforentrepreneurs.com/blog/deploy-django-on-railway-with-this-dockerfile/)
-- Create a One-Off Secret Key for Django [blog post](https://www.codingforentrepreneurs.com/blog/create-a-one-off-django-secret-key/)
+🛠 Getting Started
+------------------
 
+### 🧱 Clone the Repo
 
-Thank you to [Neon](https://kirr.co/eu0b31) for helping bring this course to life!
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditmkdir -p ~/dev/lms  cd ~/dev/lms  git clone https://github.com/codingforentrepreneurs/SaaS-Foundations .   `
 
+> ⚠️ We're using the base repo initially, but this project is evolving into a **distinct full LMS** implementation. Major features and structural changes are being added progressively.
 
-## Getting Started
+### ⚙️ Setup Virtual Environment
 
-### Clone
-```bash
-mkdir -p ~/dev/saas
-cd ~/dev/saas
-git clone https://github.com/codingforentrepreneurs/SaaS-Foundations .
-```
+#### macOS/Linux:
 
-### Create Virtual Environment
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditpython3 --version  # should be 3.11 or higher  python3 -m venv venv  source venv/bin/activate   `
 
-*macOS/Linux*
-```bash
-python3 --version # should be 3.11 or higher
-python3 -m venv venv
-source venv/bin/activate
-```
+#### Windows:
 
-*Windows*
-```bash
-c:\Python312\python.exe -m venv venv
-.\venv\Scripts\activate
-```
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditc:\Python312\python.exe -m venv venv  .\venv\Scripts\activate   `
 
-### Install Requirements
-```bash
-# with venv activated
-pip install pip --upgrade && pip install -r requirements.txt
-```
+### 📦 Install Requirements
 
-### Sample dotenv to dotnev
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditpip install --upgrade pip  pip install -r requirements.txt   `
 
-```bash
-cp .env.sample .env
-cat .env
-```
-Values include:
-- `DJANGO_DEBUG=1`
-- `DJANGO_SECRET_KEY=""`
-- `DATABASE_URL=""`
-- `EMAIL_HOST="smtp.gmail.com"`
-- `EMAIL_PORT="587"`
-- `EMAIL_USE_TLS=True`
-- `EMAIL_USE_SSL=False`
-- `EMAIL_HOST_USER=""`
-- `EMAIL_HOST_PASSWORD=""`
-- `ADMIN_USER_EMAIL=""`
-- `STRIPE_SECRET_KEY=""`
+### ⚙️ Configure .env
 
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditcp .env.sample .env   `
 
-### Create the _DJANGO_SECRET_KEY_
+Fill in the required environment variables:
 
-```bash
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-```
-or
-```bash
-openssl rand -base64 64
-```
-or
-```bash
-python -c 'import secrets; print(secrets.token_urlsafe(64))'
-```
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   envCopyEditDJANGO_DEBUG=1  DJANGO_SECRET_KEY="your-secret-key"  DATABASE_URL="your-neon-url"  EMAIL_HOST="smtp.gmail.com"  EMAIL_PORT="587"  EMAIL_USE_TLS=True  EMAIL_USE_SSL=False  EMAIL_HOST_USER="you@example.com"  EMAIL_HOST_PASSWORD="yourpassword"  ADMIN_USER_EMAIL="admin@example.com"  # Payments  PADDLE_CLIENT_ID="your-client-id"  PADDLE_CLIENT_SECRET="your-client-secret"   `
 
-Once you have this value, add update `DJANGO_SECRET_KEY` in `.env`.
+### 🔐 Generate a Django Secret Key
 
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditpython -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'   `
 
-### Create [Neon](https://kirr.co/eu0b31) Postgres Database
+### 🧬 Setup Neon PostgreSQL
 
+Follow the guide here: Neon Setup Docs
 
-#### Install Neon CLI
-Using the [Neon cli](https://neon.tech/docs/reference/cli-install) via [homebrew](https://brew.sh/):
+Or use the CLI:
 
-```bash
-brew install neonctl
-```
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditbrew install neonctl  neonctl auth  neonctl projects create --name lms  PROJECT_ID=$(neonctl projects list | grep "lms" | awk -F '│' '{print $2}' | xargs)  neonctl connection-string --project-id "$PROJECT_ID"   `
 
-#### Login to Neon CLI
+Add the resulting DATABASE\_URL to your .env.
 
-```bash
-neonctl auth
-```
-This will open a browser window to login.
+### 📁 Run Migrations
 
-####  Create a new Neon project (optional)
-```bash
-neonctl projects create --name saas
-```
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditcd src  python manage.py migrate   `
 
-#### Get the Project ID
+### 🧑‍💻 Create Superuser
 
-Once created, get the project id: 
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditpython manage.py createsuperuser   `
 
-```bash
-neonctl projects list
-```
-Projects
+### 🧊 Pull Vendor Static Files
 
-```bash
-┌──────────────────────────┬────────────────────────────┬───────────────┬──────────────────────┐
-│ Id                       │ Name                       │ Region Id     │ Created At           │
-├──────────────────────────┼────────────────────────────┼───────────────┼──────────────────────┤
-│ steep-base-11409687      │ saas                       │ aws-us-east-2 │ 2024-06-02T04:03:07Z │
-└──────────────────────────┴────────────────────────────┴───────────────┴──────────────────────┘
-```
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditpython manage.py vendor_pull   `
 
-```bash
-PROJECT_ID=steep-base-11409687
-```
-Replace `steep-base-11409687` with your project id.
+### 💳 Set Up Paddle
 
-Or using the shortcut:
+1.  Go to Paddle.com
+    
+2.  Register and obtain your:
+    
+    *   PADDLE\_CLIENT\_ID
+        
+    *   PADDLE\_CLIENT\_SECRET
+        
+3.  Add them to your .env
+    
 
-```bash
-PROJECT_ID=$(neonctl projects list | grep "saas" | awk -F '│' '{print $2}' | xargs)
-```
+Use the official SDK:
 
-#### Get the Database Connection String
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditpip install paddle-python-sdk   `
 
-```bash
-neonctl connection-string --project-id "$PROJECT_ID"
-```
-Set this value to `DATABASE_URL` in `.env`. 
+### 🎯 Run the Server
 
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   bashCopyEditpython manage.py runserver   `
 
-### Run Migrations
+You’re now live on your local machine! 🧠💥
 
-```bash
-source venv/bin/activate 
-# or .\venv\Scripts\activate if windows
-cd src
-python manage.py migrate
-```
+✅ Credits
+---------
 
-### Create a Superuser
-
-```bash
-python manage.py createsuperuser
-```
-
-### Pull Vendor Static Files
-
-```bash
-python manage.py vendor_pull
-```
-
-
-### Create a Stripe Account
-
-1. Sign up on [Stripe.com](https://www.stripe.com) for an account
-2. Get or create a Stripe Secret API Key (Dashboard > Developers > API keys > _Secret key_ )
-3. Update _dotenv_ (`.env`) with the value `STRIPE_SECRET_KEY` with your key.
-
-
-### Run the Server
-
-```bash
-python manage.py runserver
-```
-
-Ready to roll! 🚀
-
-Much more coming soon!
+This project was **originally bootstrapped** using [SaaS Foundations by Coding for Entrepreneurs](https://github.com/codingforentrepreneurs/SaaS-Foundations), licensed under the MIT License.We’ve extended it significantly to build a feature-rich LMS with course management, payments, and real-time features.
