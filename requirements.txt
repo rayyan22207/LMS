@@ -1,50 +1,77 @@
-# Core
-Django>=5.0,<5.1
-python-decouple
-dj-database-url
-psycopg[binary]
-requests
-
-# Server & Deployment
-gunicorn
-whitenoise
-
-# Auth
-django-allauth[socialaccount]
-django-allauth-ui
-django-widget-tweaks
-
-# Frontend (for Tailwind/Flowbite integration)
-django-tailwind
-django-browser-reload  # for hot reloading during dev
-django-htmx  # required for SaaS Foundations
-
-# File Storage (AWS S3)
-boto3
-django-storages
-
-# Payment Integration (Paddle / Stripe)
-paddle-python-sdk  # or use `requests` if you custom integrate
-# OR stripe (if fallback or needed for local testing)
-# stripe
-
-# Realtime Features
-channels
-channels-redis  # for production usage
-
-# Security & CORS
-django-cors-headers
-
-# Dev Tools
-ipython
-black
-isort
-pre-commit
-
-# Optional Enhancements
-django-debug-toolbar  # for dev only
-markdown2  # if lessons support markdown content
-Pillow  # image uploads for thumbnails
-
-# Environment Management
-python-dotenv  # alternative/flexible to decouple if needed
+asgiref==3.9.1
+asttokens==3.0.0
+black==25.1.0
+boto3==1.39.14
+botocore==1.39.14
+certifi==2025.7.14
+cffi==1.17.1
+cfgv==3.4.0
+channels==4.2.2
+channels_redis==4.3.0
+charset-normalizer==3.4.2
+click==8.2.1
+colorama==0.4.6
+cryptography==45.0.5
+decorator==5.2.1
+distlib==0.4.0
+dj-database-url==3.0.1
+Django==5.0.14
+django-allauth==65.10.0
+django-allauth-ui==1.8.1
+django-browser-reload==1.18.0
+django-cors-headers==4.7.0
+django-debug-toolbar==6.0.0
+django-htmx==1.23.2
+django-storages==1.14.6
+django-tailwind==4.2.0
+django-widget-tweaks==1.5.0
+executing==2.2.0
+Faker==37.5.3
+filelock==3.18.0
+gunicorn==23.0.0
+identify==2.6.12
+idna==3.10
+ipython==9.4.0
+ipython_pygments_lexers==1.1.1
+isort==6.0.1
+jedi==0.19.2
+jmespath==1.0.1
+markdown2==2.5.3
+matplotlib-inline==0.1.7
+msgpack==1.1.1
+mypy_extensions==1.1.0
+nodeenv==1.9.1
+oauthlib==3.3.1
+packaging==25.0
+paddle-python-sdk==1.8.0
+parso==0.8.4
+pathspec==0.12.1
+pillow==11.3.0
+platformdirs==4.3.8
+pre_commit==4.2.0
+prompt_toolkit==3.0.51
+psycopg==3.2.9
+psycopg-binary==3.2.9
+pure_eval==0.2.3
+pycparser==2.22
+Pygments==2.19.2
+PyJWT==2.10.1
+python-dateutil==2.9.0.post0
+python-decouple==3.8
+python-dotenv==1.1.1
+PyYAML==6.0.2
+redis==6.2.0
+requests==2.32.4
+s3transfer==0.13.1
+six==1.17.0
+slippers==0.6.2
+sqlparse==0.5.3
+stack-data==0.6.3
+traitlets==5.14.3
+typeguard==2.13.3
+typing_extensions==4.14.1
+tzdata==2025.2
+urllib3==2.5.0
+virtualenv==20.32.0
+wcwidth==0.2.13
+whitenoise==6.9.0
