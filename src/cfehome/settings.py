@@ -82,10 +82,10 @@ INSTALLED_APPS = [
     "courses",
     "discussions",
     "certificates",
-    "media",
     "realtime",
     "payments",
     "core",
+    "uploads",
     "enrollments",
 
 ]
@@ -229,6 +229,9 @@ STATICFILES_BASE_DIR = BASE_DIR / "staticfiles"
 STATICFILES_BASE_DIR.mkdir(exist_ok=True, parents=True)
 STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR / "vendors"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # source(s) for python manage.py collectstatic 
 STATICFILES_DIRS = [
     STATICFILES_BASE_DIR
@@ -242,10 +245,17 @@ STATIC_ROOT = BASE_DIR / "local-cdn"
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "OPTIONS": {
+            "location": BASE_DIR / "media",
+        },
+    },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

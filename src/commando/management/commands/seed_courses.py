@@ -40,7 +40,7 @@ class Command(BaseCommand):
                 category=random.choice(categories),
                 price=Decimal(random.randint(10, 99)),
                 is_published=True,  # make them visible in listings
-                thumbnail="course_thumbnails/default.jpg"  # replace with a real file in prod
+                thumbnail="C:/Users/Rayyan/Downloads/default.jpg"  # replace with a real file in prod
             )
             courses.append(course)
 

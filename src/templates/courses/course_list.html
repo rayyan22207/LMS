@@ -6,7 +6,13 @@
         {% for course in courses %}
         <a href="{% url 'courses:course_detail' course.slug %}"
             class="block bg-white shadow-md rounded-md overflow-hidden">
-            <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}" class="w-full h-40 object-cover">
+            {% if course.thumbnail %}
+                <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}" class="w-full h-40 object-cover">
+            {% else %}
+                <div class="w-full h-40 bg-gray-200 flex items-center justify-center">
+                    <span class="text-gray-500">No Image Available</span>
+                </div>
+            {% endif %}
             <div class="p-4">
                 <h2 class="text-xl font-semibold">{{ course.title }}</h2>
                 <p class="text-sm text-gray-600">{{ course.category }}</p>
